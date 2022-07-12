@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Answer</h1>
+
+  <% msgs = {"You": params[:question], "Your coach": @coach_answer} %>
+  <% msgs.each do  |author, body|%>
+    <% is_coach = author==:"Your coach" %>
+  <div class="msg-background">
+
+    <div class="msg-foreground <%= "coach" if is_coach %>">
+    <p>
+
+      <% if is_coach%> <strong> <% end %>
+        <%= body %>
+      <% if is_coach%> </strong> <% end %>
+    </p>
+    <p><em>—<%= author %></em></p>
+    </div>
+  </div>
+  <% end %>
+  <%= link_to "Ask a new question", :question %>
+</div>
